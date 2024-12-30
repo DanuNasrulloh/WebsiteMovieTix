@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../CSS/Registerr.css" rel="stylesheet">
+    <title>Register</title>
+</head>
+<body>
+   <div class="container">
+       <div class="form-section">
+           <h3>MovieTix</h3>
+           <h1>Buat Akun Baru</h1>
+           <div class="card-body">
+               <form action="../PHP/register.php" method="POST">
+                   <div class="form-row">
+                       <div class="form-group col-md-6">
+                           <label for="fullname">Nama Lengkap</label>
+                           <input type="text" name="fullname" id="fullname" class="form-control" required>
+                       </div>
+                       <div class="form-group col-md-6">
+                           <label for="username">Username</label>
+                           <input type="text" name="username" id="username" class="form-control" required>
+                       </div>
+                   </div>
+                   <div class="form-row">
+                       <div class="form-group col-md-6">
+                           <label for="email">Email</label>
+                           <input type="email" name="email" id="email" class="form-control" required>
+                       </div>
+                       <div class="form-group col-md-6">
+                           <label for="password">Password</label>
+                           <input type="password" name="password" id="password" class="form-control" required>
+                       </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="confirm_password">Konfirmasi Password</label>
+                       <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                   </div>
+                   <button type="submit" class="btn btn-primary">Register</button>
+               </form>
+               <p class="mt-4">Sudah punya akun? 
+                   <a href="../HTML/index.html" class="text-primary">Pindah ke halaman login</a>
+               </p>
+           </div>
+       </div>
+   </div>
+</body>
+</html>

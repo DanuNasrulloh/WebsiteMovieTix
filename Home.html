@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurassic World - Homepage</title>
+    <link href="../CSS/Home.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">Jurassic World</a>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Cari film...">
+                <button id="searchButton">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../HTML/Home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link">Services</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link" id="logoutButton">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-image">
+            <video autoplay muted loop id="background-video">
+                <source src="../VIDEO/JurassricWorld.mp4" type="video/mp4">
+            </video>
+            <h2>Film Terbaru</h2>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="../IMAGE/jurasicOne.jpg" alt="Jurassic Park 1993">
+                <div class="card-content">
+                    <h3>Jurassic Park (1993)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../IMAGE/urutanDua.jpg" alt="The Lost World">
+                <div class="card-content">
+                    <h3>The Lost World: Jurassic Park (1997)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../IMAGE/urutanTiga.jpg" alt="Jurassic Park III">
+                <div class="card-content">
+                    <h3>Jurassic Park III (2001)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../IMAGE/urutanKeempat.jpg" alt="Jurassic World">
+                <div class="card-content">
+                    <h3>Jurassic World (2015)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../IMAGE/urutanKelima.jpg" alt="Fallen Kingdom">
+                <div class="card-content">
+                    <h3>Jurassic World: Fallen Kingdom (2018)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../IMAGE/urutankeenam.jpg" alt="Dominion">
+                <div class="card-content">
+                    <h3>Jurassic World: Dominion (2022)</h3>
+                    <a href="#" class="btn-lihat">Lihat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Jurassic World. Danu Nasrulloh.</p>
+            <ul class="footer-menu">
+                <li class="footer-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                <li class="footer-item"><a href="#" class="footer-link">Terms of Service</a></li>
+                <li class="footer-item"><a href="https://www.instagram.com/iceoo0509/" class="footer-link">Contact Us : IG-Danu Nasrulloh</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../JS/MovieSystem.js"></script>
+    <script>
+        const movieSystem = new MovieSystem();
+        movieSystem.initializeHome();
+    </script>
+    <script src="../JS/Search.js"></script>
+    <script>
+    const search = new Search();
+    search.initializeHome();
+    </script>
+    <script src="../JS/logout.js"></script>
+</body>
+</html>

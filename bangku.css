@@ -1,0 +1,99 @@
+.screen {
+            background: #fff;
+            height: 70px;
+            width: 100%;
+            margin: 15px 0;
+            transform: rotateX(-45deg);
+            box-shadow: 0 3px 10px rgba(255,255,255,0.7);
+            text-align: center;
+            line-height: 70px;
+            color: #666;
+        }
+
+        .seat-container {
+            perspective: 1000px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .seat-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .seat {
+            background-color: #444451;
+            height: 30px;
+            width: 35px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .seat.selected {
+            background-color: #007bff;
+        }
+
+        .seat.occupied {
+            background-color: #cc0000;
+            cursor: not-allowed;
+        }
+
+        .booking-info {
+            margin: 20px 0;
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .seat-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-seat {
+            height: 15px;
+            width: 15px;
+            border-radius: 3px;
+        }
+       #save-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute; 
+            top: 60%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            text-align: center; 
+        }
+
+        #save-button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+        .legend-available { background-color: #444451; }
+        .legend-selected { background-color: #007bff; }
+        .legend-occupied { background-color: #cc0000; }

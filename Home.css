@@ -1,0 +1,275 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.navbar-logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    flex: 1;
+    max-width: 400px;
+}
+
+#searchInput {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+}
+
+#searchInput::placeholder {
+    color: #aaa;
+}
+
+#searchButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #e50914;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchButton:hover {
+    background-color: #ff0f1a;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #e50914;
+}
+
+/* Main container */
+.container {
+    margin-top: 60px;
+}
+
+/* Main video section */
+.main-image {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-image h2 {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: #ffffff;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Card grid - Updated */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: #141414;
+}
+
+/* Card - Updated */
+.card {
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    justify-self: center;
+    width: 100%;
+}
+
+.card.hidden {
+    display: none;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Card image - Updated */
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Card content - Updated */
+.card-content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-content h3 {
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Button - Updated */
+.btn-lihat {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: #e50914;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-lihat:hover {
+    background-color: #ff0f1a;
+}
+
+/* No results message */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #000000;
+    padding: 2rem 0;
+    color: #ffffff;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #e50914;
+}
+
+/* Responsive design - Updated */
+@media screen and (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .main-image h2 {
+        font-size: 2rem;
+        left: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-menu {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Additional responsive breakpoint for smaller screens */
+@media screen and (max-width: 576px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .card img {
+        height: 250px;
+    }
+
+    .card-content h3 {
+        font-size: 1rem;
+    }
+
+    .btn-lihat {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}

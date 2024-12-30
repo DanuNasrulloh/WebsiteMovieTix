@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Seat Booking</title>
+    <link rel="stylesheet" href="../CSS/bangku.css">
+</head>
+<body>
+    <div class="seat-container">
+        <div class="screen">LAYAR</div>
+        
+        <div class="seat-legend">
+            <div class="legend-item">
+                <div class="legend-seat legend-available"></div>
+                <span>Tersedia</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-seat legend-selected"></div>
+                <span>Dipilih</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-seat legend-occupied"></div>
+                <span>Terisi</span>
+            </div>
+        </div>
+
+        <div class="booking-info">
+            <p>Kursi terpilih: <span id="selected-seats">None</span></p>
+            <p>Total kursi: <span id="seat-count">0</span></p>
+        </div>
+
+        <!-- Seat rows A-E, 8 seats each -->
+        <div class="seat-row">
+            <div class="seat">A1</div>
+            <div class="seat">A2</div>
+            <div class="seat occupied">A3</div>
+            <div class="seat">A4</div>
+            <div class="seat">A5</div>
+            <div class="seat">A6</div>
+            <div class="seat">A7</div>
+            <div class="seat">A8</div>
+        </div>
+        <!-- Repeat for rows B-E -->
+        <div class="seat-row">
+            <div class="seat">B1</div>
+            <div class="seat">B2</div>
+            <div class="seat">B3</div>
+            <div class="seat occupied">B4</div>
+            <div class="seat occupied">B5</div>
+            <div class="seat">B6</div>
+            <div class="seat">B7</div>
+            <div class="seat">B8</div>
+        </div>
+    </div>
+
+    <!-- Save button -->
+    <button id="save-button">Simpan</button>
+
+    <script>
+      // Fungsi untuk memperbarui tampilan kursi yang dipilih
+function updateSelectedSeats() {
+    const selectedSeats = document.querySelectorAll('.seat.selected');
+    const seatCount = selectedSeats.length;
+    const seatNames = Array.from(selectedSeats).map(seat => seat.textContent).join(', ');
+
+    document.getElementById('selected-seats').textContent = seatNames || 'None';
+    document.getElementById('seat-count').textContent = seatCount;
+}
+
+// Event listener untuk klik kursi
+document.querySelectorAll('.seat').forEach(seat => {
+    seat.addEventListener('click', function () {
+        if (!this.classList.contains('occupied')) {
+            this.classList.toggle('selected');
+            updateSelectedSeats();
+        }
+    });
+});
+
+// Event listener untuk tombol simpan
+document.getElementById('save-button').addEventListener('click', function() {
+    const selectedSeats = Array.from(document.querySelectorAll('.seat.selected'))
+        .map(seat => seat.textContent);
+
+    if (selectedSeats.length === 0) {
+        alert("Pilih setidaknya satu kursi sebelum menyimpan!");
+        return;
+    }
+
+    // Menyimpan kursi yang dipilih di localStorage
+    localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+
+    // Kirim data ke server menggunakan fetch
+    fetch("../PHP/save_seat.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ seats: selectedSeats })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        // Jika berhasil, arahkan ke halaman Booking.html
+        if (data.message === "Kursi berhasil disimpan") {
+            window.location.href = "Booking.html";
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/EditBooking.css">
+    <link rel="stylesheet" href="../CSS/Home.css">
+</head>
+<body>
+   <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">Jurassic World</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../HTML/Home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link">Services</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link" id="logoutButton">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="movie-content">
+            <div class="movie-poster">
+                <img src="/api/placeholder/250/350" alt="Movie Poster">
+            </div>
+            <div class="movie-details">
+                <h1 class="movie-title">Judul Film</h1>
+                <p class="movie-description">Deskripsi pada film</p>
+            </div>
+        </div>
+        
+        <form method="POST" action="../PHP/koneksiBookingAndPembayaran.php">
+             <div class="booking-section">
+                    <h3>Judul Film</h3>
+                     <input type="text" name="film_name" style="width: 100%; padding: 8px;" required>
+                </div>
+            <div class="booking-details">
+                <div class="booking-section">
+                    <h3>Tanggal</h3>
+                    <input type="date" name="booking_date" style="width: 100%; padding: 8px;" required>
+                </div>
+                
+                <div class="booking-section">
+                    <h3>Pilih bangku anda</h3>
+                    <button class="lihat-button" onclick="window.location.href='../HTML/SetBangku.html'">lihat</button>
+                    <p id="selected-seats-display">Kursi yang dipilih: Belum ada</p>
+                    <input type="hidden" name="selected_seats" id="selected-seats" value=""> <!-- hidden field for selected seats -->
+                </div>
+
+                <div class="booking-section">
+                    <h3>Pilih waktu</h3>
+                    <div class="booking-slots">
+                        <div class="time-slot" data-time="10:00" onclick="setBookingTime(this)">10:00</div>
+                        <div class="time-slot" data-time="12:30" onclick="setBookingTime(this)">12:30</div>
+                        <div class="time-slot" data-time="15:00" onclick="setBookingTime(this)">15:00</div>
+                        <div class="time-slot" data-time="17:30" onclick="setBookingTime(this)">17:30</div>
+                        <div class="time-slot" data-time="20:00" onclick="setBookingTime(this)">20:00</div>
+                        <div class="time-slot" data-time="22:30" onclick="setBookingTime(this)">22:30</div>
+                    </div>
+            <!-- Hidden input for booking time -->
+            <input type="hidden" name="booking_time" id="booking_time" value="">
+        </div>
+
+
+                <div class="booking-section">
+                    <h3>Pembokingan</h3>
+                    <div class="summary">
+                        <div class="summary-row">
+                            <span>Harga:</span>
+                            <span>Rp 50.000</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Jumlah tiket:</span>
+                            <input type="number" name="ticket_count" min="1" value="1" required>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total harga:</span>
+                            <span>Rp 50.000</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="next-button">Next</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+   <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Jurassic World. Danu Nasrulloh.</p>
+            <ul class="footer-menu">
+                <li class="footer-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                <li class="footer-item"><a href="#" class="footer-link">Terms of Service</a></li>
+                <li class="footer-item"><a href="https://www.instagram.com/iceoo0509/" class="footer-link">Contact Us : IG-Danu Nasrulloh</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../JS/MovieSystem.js"></script>
+    <script>
+        const movieSystem = new MovieSystem();
+        movieSystem.initializeBooking();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+            const seatDisplay = document.getElementById('selected-seats-display');
+            const selectedSeatsInput = document.getElementById('selected-seats');
+
+            if (selectedSeats.length > 0) {
+                seatDisplay.textContent = `Kursi yang dipilih: ${selectedSeats.join(', ')}`;
+                selectedSeatsInput.value = selectedSeats.join(', ');
+            } else {
+                seatDisplay.textContent = 'Kursi yang dipilih: Belum ada';
+                selectedSeatsInput.value = ''; // Reset hidden input if no seats are selected
+            }
+        });
+        
+        function setBookingTime(element){
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const bookingTimeInput = document.getElementById('booking_time');
+            timeSlots.forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+            bookingTimeInput.value = element.getAttribute('data-time');
+        }
+    </script>
+    <script src="../JS/logout.js"></script>
+</body>
+</html>
